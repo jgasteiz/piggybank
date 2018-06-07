@@ -1,0 +1,12 @@
+{% block content %}
+    <h1>Oh hai, authenticated user.</h1>
+    <h2>Your accounts:</h2>
+    <ul>
+        {% for account in account_list %}
+        <li>
+            <a href="{% url 'monzo:my_transactions' account.id %}">See transactions</a>
+            <div>{{ account }}</div>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% block content %}
+    <h1>Oh hai, authenticated user.</h1>
+    <h2>Your transactions for the account {{ account_id }}:</h2>
+    <ul>
+        {% for transaction in transaction_list %}
+        <li>{{ transaction }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
