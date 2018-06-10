@@ -1,9 +1,13 @@
 {% block content %}
     <h1>Oh hai, authenticated user.</h1>
     <h2>Your transactions for the account {{ account_id }}:</h2>
+    <a href="{% url 'monzo:my_transactions' account_id %}?start={{ previous_start }}">Previous</a>
+    <a href="{% url 'monzo:my_transactions' account_id %}?start={{ next_start }}">Next</a>
     <ul>
         {% for transaction in transaction_list %}
-        <li>{{ transaction }}</li>
+        <li>
+            {{ transaction.created|date:'Y-m-d H:i' }} | £{{ transaction.amount }} | {{ transaction.description }}
+        </li>
         {% endfor %}
     </ul>
 {% endblock %}
